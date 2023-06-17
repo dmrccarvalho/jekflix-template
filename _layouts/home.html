@@ -14,7 +14,42 @@ layout: main
     {% assign offset = 0 %}
 {% endif %}
 
-<main class="home {% if site.show_hero and paginator == nil or paginator.page == 1 %}no-padding{% endif %}" role="main">
+<main class="home {% if site.show_sidekick %}no-padding{% endif %}" role="main">
+    {% if site.show_sidekick %}
+        <!-- Sidekick -->
+        {% assign sidekick = site.pages | where: 'title', 'About' | first %}
+        {% if sidekick.optimized_image %}
+            {% assign sidekick_bg_image = sidekick.optimized_image %}
+        {% elsif post.image %}
+            {% assign sidekick_bg_image = sidekick.image %}
+        {% else %}
+            {% assign sidekick_bg_image = "/assets/img/sidekick_bg.jpeg" %}
+        {% endif %}
+        {% if sidekick.author_image %}
+            {% assign author_image = sidekick.author_image %}
+        {% else %}
+            {% assign author_image = "/assets/img/user.jpg" %}
+        {% endif %}
+        <section class="sidekick" style="background-image: url({{ sidekick_bg_image }})">
+            <div class="pixels"></div>
+            <div class="gradient"></div>
+            <div class="content">
+                <div class="author-content">
+                    <img src="{{author_image}}" class="author-image" alt="Profile Photo">
+                    <div class="author-details">
+                        <h1 class="title">{{ sidekick.author }}</h1>
+                        <p class="description">{{ sidekick.subtitle }}</p>
+                    </div>
+                </div>
+                <!--<div class="buttons">
+                    <a href="{{ sidekick.url | prepend: site.baseurl }}" role="button" class="button">
+                        <svg><use xlink:href="#icon-read"></use></svg>
+                        <span>{{ site.translations.button.see_about | default: "See about" }}</span>
+                    </a>
+                </div>-->
+            </div>
+        </section>
+    {% endif %}
     {% if site.show_hero and paginator == nil or paginator.page == 1 %}
         <!-- Hero -->
         {% assign featured = posts.first %}

@@ -5,11 +5,13 @@ date: '2020-02-27 01:53:59'
 title: About
 description: Some description.
 permalink: /about/
+author: Diogo Carvalho
+subtitle: Software Engineer | Technology Enthusiast
 ---
 
-<img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Thiago Rossener" width="200">
+<img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Diogo Carvalho" width="200">
 
-# About
+# {{page.author}}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
